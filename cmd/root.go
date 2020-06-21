@@ -29,7 +29,7 @@ func Execute() error {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobra.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is .pepapig)")
 	rootCmd.PersistentFlags().StringP("author", "a", "anand", "anand pathak")
 	rootCmd.PersistentFlags().StringVarP(&userLicense, "license", "l", "", "apache")
 	rootCmd.PersistentFlags().Bool("viper", true, "use Viper for configuration")
@@ -58,13 +58,11 @@ func initConfig() {
 			er(err)
 		}
 
-		// Search config in home directory with name ".cobra" (without extension).
+		// Search config in home directory with name ".pepapig" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".cobra")
+		viper.SetConfigName(".pepapig")
 	}
-
 	viper.AutomaticEnv()
-
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}
