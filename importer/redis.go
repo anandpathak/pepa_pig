@@ -6,8 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"regexp"
-	"strings"
+	"pepa_pig/utils"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -37,9 +36,8 @@ func InsertRedis(filepath string) {
 			fmt.Printf("error in line: %s", err.Error())
 			continue
 		}
-		space := regexp.MustCompile(`\s+`)
-		productName := space.ReplaceAllString(strings.TrimSpace(record[0]), "_")
-		country := space.ReplaceAllString(strings.TrimSpace(record[1]), "_")
+		productName := utils.ConvertTolowerCaseWithoutSpace(record[0])
+		country := utils.ConvertTolowerCaseWithoutSpace(record[0])
 		err = rdb.Set(ctx, productName, country, 0).Err()
 		if err != nil {
 			fmt.Print(err)

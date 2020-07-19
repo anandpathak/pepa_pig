@@ -1,4 +1,4 @@
-package fetchcountries
+package addcountries
 
 import (
 	"github.com/gin-gonic/gin"
@@ -12,10 +12,14 @@ func Handler(c *gin.Context) {
 		context: c,
 		req:     req,
 	}
+	if !req.isValid() {
+		c.JSON(400, gin.H{"error": "Not a valid company/country"})
+		return
+	}
 	res, err := s.Execute()
 	if err != nil {
 		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(200, gin.H{"data": res.Data})
+	c.JSON(200, gin.H{"data": res.Message})
 }

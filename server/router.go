@@ -3,6 +3,7 @@ package server
 import (
 	"net/http"
 
+	"pepa_pig/internal/addcountries"
 	fetchcountries "pepa_pig/internal/fetch_countries"
 
 	"github.com/gin-contrib/cors"
@@ -21,5 +22,6 @@ func setupRouter() *gin.Engine {
 	})
 
 	r.POST("/fetch_countries", fetchcountries.Handler)
+	r.POST("/add_country", addcountries.Handler)
 	return r
 }

@@ -1,2 +1,5 @@
 data/*
 example.http
+.vscode
+pepa_pig
+go.sum
