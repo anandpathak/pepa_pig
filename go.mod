@@ -12,6 +12,7 @@ require (
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.7.0
 	github.com/stretchr/testify v1.4.0
+	golang.org/x/net v0.0.0-20190923162816-aa69164e4478
 	google.golang.org/genproto v0.0.0-20191108220845-16a3f7862a1a
 	gotest.tools v2.2.0+incompatible
 )

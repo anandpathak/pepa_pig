@@ -40,6 +40,7 @@ func init() {
 
 	rootCmd.AddCommand(importData())
 	rootCmd.AddCommand(httpServerCmd())
+	rootCmd.AddCommand(ReviewSubmission())
 }
 
 func er(msg interface{}) {
