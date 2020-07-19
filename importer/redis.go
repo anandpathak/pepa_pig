@@ -38,8 +38,8 @@ func InsertRedis(filepath string) {
 			continue
 		}
 		space := regexp.MustCompile(`\s+`)
-		productName := space.ReplaceAllString(strings.TrimSpace(record[1]), "_")
-		country := space.ReplaceAllString(strings.TrimSpace(record[6]), "_")
+		productName := space.ReplaceAllString(strings.TrimSpace(record[0]), "_")
+		country := space.ReplaceAllString(strings.TrimSpace(record[1]), "_")
 		err = rdb.Set(ctx, productName, country, 0).Err()
 		if err != nil {
 			fmt.Print(err)
