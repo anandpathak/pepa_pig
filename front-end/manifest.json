@@ -1,0 +1,19 @@
+  {
+    "name": "Get Country Detail",
+    "version": "1.0",
+    "description": "Adds country code to the products shown on amazon",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "content_scripts": [
+      {
+      "matches": ["<all_urls>"],
+      "js": ["jquery.min.js","add_country.js"]
+    }],
+    "background": {
+      "persistence": false,
+      "scripts": ["background.js"]
+    },
+    "page_action": {
+      "default_popup": "popup.html"
+    },
+    "manifest_version": 2
+  }
